@@ -22,5 +22,5 @@ jobs:
         run: |
            wget -q --show-progress https://raw.githubusercontent.com/Area69Lab/warp-script/main/warp.py
            sudo -EH pip3 install --upgrade pip wheel setuptools requests
-       - name: Running Script
-         run: python3 warp.py
+      - name: Running Script
+        run: python3 warp.py
