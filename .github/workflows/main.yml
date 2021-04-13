@@ -1,0 +1,26 @@
+name: WARP+ CI
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  ID: ${{ secrets.ID }}
+
+jobs:
+  refill:
+    runs-on: ubuntu-latest
+
+    steps:
+      # At $GITHUB_WORKSPACE
+      - uses: actions/checkout@main
+
+      - name: Download Script
+        run: |
+           wget -q --show-progress https://raw.githubusercontent.com/Area69Lab/warp-script/main/warp.py
+           sudo -EH pip3 install --upgrade pip wheel setuptools requests
+       - name: Running Script
+         run: python3 warp.py
